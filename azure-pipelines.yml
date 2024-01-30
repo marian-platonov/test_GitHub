@@ -1,44 +1,25 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
-trigger:
-- main
-
-pool: Default
-
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
-  
-  # This pipeline is broken into stages for the approval functionality. Stages are ran independantly, which means the pipeline can pause until the approval is received. 
-  stages:
-  # Build the nuget package.
-  - stage: Build
-    jobs:
-    - job: BuildJob
-      pool: LocalMachinePool # Update this if using dedicated build pool
-      workspace:
-        clean: all
-      steps:
-      - script: 'echo project path: ${{ parameters.projectPath }}, folder name: ${{ parameters.folderName }}, versioning strategy: ${{ parameters.versioningStrategy }}, environments: ${{ parameters.environments }}'
-        displayName: Log parameters
-      #- task: UiPathInstallPlatform@4  # This installs required exes. Not necessary if using a dedicated build machine.
-      - task: UiPathInstallPlatform@4
-        inputs:
-          cliVersion: 'WIN_23.10.8753.32995'
-          cliNupkgPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\UiPath.CLI.Windows.23.10.8753.32995.nupkg'
-      - task: UiPathPack@4
-        inputs:
-          versionType: 'CurrentVersion'
-          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess22\project.json'
-          outputType: 'Process'
-          orchestratorConnection: 'UiPath Cloud marianplatonov'
-          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
-          traceLevel: 'Verbose'
+# This pipeline is broken into stages for the approval functionality. Stages are ran independantly, which means the pipeline can pause until the approval is received. 
+stages:
+# Build the nuget package.
+- stage: Build
+  jobs:
+  - job: BuildJob
+    pool: Default # Update this if using dedicated build pool
+    workspace:
+      clean: all
+    steps:
+    - script: 'echo project path: ${{ parameters.projectPath }}, folder name: ${{ parameters.folderName }}, versioning strategy: ${{ parameters.versioningStrategy }}, environments: ${{ parameters.environments }}'
+      displayName: Log parameters
+    #- task: UiPathInstallPlatform@4  # This installs required exes. Not necessary if using a dedicated build machine.
+    - task: UiPathInstallPlatform@4
+      inputs:
+        cliVersion: 'WIN_23.10.8753.32995'
+        cliNupkgPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\UiPath.CLI.Windows.23.10.8753.32995.nupkg'
+    - task: UiPathPack@4
+      inputs:
+        versionType: 'CurrentVersion'
+        projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess22\project.json'
+        outputType: 'Process'
+        orchestratorConnection: 'UiPath Cloud marianplatonov'
+        outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+        traceLevel: 'Verbose'
