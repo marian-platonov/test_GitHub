@@ -11,15 +11,7 @@ parameters:
 - name: 'versioningStrategy'
   default: 'CurrentVersion'
   type: string
-# The environments to update the package version to the deployed version. 
-# Not required for modern folders or if you do not want to update the package version.
-- name: 'environments'
-  default: ''
-  type: string
-# The name of the testSet to be executed 
-- name: 'testSet'
-  default: 'Azure.Devops.2023_Tests'
-  type: string
+
 
 # This pipeline is broken into stages for the approval functionality. Stages are ran independantly, which means the pipeline can pause until the approval is received. 
 stages:
@@ -31,18 +23,17 @@ stages:
     workspace:
       clean: all
     steps:
-    - script: 'echo project path: ${{ parameters.projectPath }}, folder name: ${{ parameters.folderName }}, versioning strategy: ${{ parameters.versioningStrategy }}, environments: ${{ parameters.environments }}'
-      displayName: Log parameters
-    #- task: UiPathInstallPlatform@4  # This installs required exes. Not necessary if using a dedicated build machine.
-    - task: UiPathInstallPlatform@4
-      inputs:
-        cliVersion: 'WIN_23.10.8753.32995'
-        cliNupkgPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\UiPath.CLI.Windows.23.10.8753.32995.nupkg'
-    - task: UiPathPack@4
-      inputs:
-        versionType: 'CurrentVersion'
-        projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess22\project.json'
-        outputType: 'Process'
-        orchestratorConnection: 'UiPath Cloud marianplatonov'
-        outputPath: '$(Build.ArtifactStagingDirectory)\Output'
-        traceLevel: 'Verbose'
+    
+      #- task: UiPathInstallPlatform@4  # This installs required exes. Not necessary if using a dedicated build machine.
+      - task: UiPathInstallPlatform@4
+        inputs:
+          cliVersion: 'WIN_23.10.8753.32995'
+          cliNupkgPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\UiPath.CLI.Windows.23.10.8753.32995.nupkg'
+      - task: UiPathPack@4
+        inputs:
+          versionType: 'CurrentVersion'
+          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess22\project.json'
+          outputType: 'Process'
+          orchestratorConnection: 'UiPath Cloud marianplatonov'
+          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+          traceLevel: 'Verbose'
