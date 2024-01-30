@@ -11,11 +11,6 @@ parameters:
 - name: 'versioningStrategy'
   default: 'CurrentVersion'
   type: string
-# The environments to update the package version to the deployed version. 
-# Not required for modern folders or if you do not want to update the package version.
-- name: 'environments'
-  default: ''
-  type: string
 # The name of the testSet to be executed 
 - name: 'testSet'
   default: 'Azure.Devops.2023_Tests'
