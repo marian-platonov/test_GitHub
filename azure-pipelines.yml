@@ -41,6 +41,8 @@ stages:
       - task: UiPathDeploy@4
         inputs:
           orchestratorConnection: 'UiPath Cloud marianplatonov'
+          createProcess: false
+          folderName: 'Shared'
           packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
       
