@@ -32,8 +32,8 @@ stages:
       - task: UiPathPack@4
         inputs:
           versionType: 'CurrentVersion'
-          projectJsonPath: 'C:\Users\marian.platonov\Desktop\Configurations and Libraries\1. Libraries\Famous\project.json'
-          outputType: 'Library'
+          projectJsonPath: 'C:\Users\marian.platonov\Desktop\Configurations and Libraries\Test2310ProcessWith2310Library\project.json'
+          outputType: 'Process'
           orchestratorConnection: 'UiPath Cloud marianplatonov'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
@@ -41,8 +41,8 @@ stages:
       - task: UiPathDeploy@4
         inputs:
           orchestratorConnection: 'UiPath Cloud marianplatonov'
-          createProcess: false
-          folderName: 'Shared'
+          createProcess: true
+          folderName: 'AzureDevOps'
           packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
       
