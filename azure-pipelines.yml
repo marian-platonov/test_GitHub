@@ -32,8 +32,15 @@ stages:
       - task: UiPathPack@4
         inputs:
           versionType: 'CurrentVersion'
-          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess22\project.json'
-          outputType: 'Process'
+          projectJsonPath: 'C:\Users\marian.platonov\Desktop\Configurations and Libraries\1. Libraries\Famous\project.json'
+          outputType: 'Library'
           orchestratorConnection: 'UiPath Cloud marianplatonov'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
+      
+      - task: UiPathDeploy@4
+        inputs:
+          orchestratorConnection: 'UiPath Cloud marianplatonov'
+          packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
+          traceLevel: 'Verbose'
+      
