@@ -18,32 +18,30 @@ stages:
 # Build the nuget package.
 - stage: Build
   jobs:
-  - job: BuildJob
+  - job: PackAndDeployProcess
     pool: Default # Update this if using dedicated build pool
     workspace:
       clean: all
     steps:
     
       #- task: UiPathInstallPlatform@4  # This installs required exes. Not necessary if using a dedicated build machine.
-      - task: UiPathInstallPlatform@4
+      - task: UiPathInstallPlatform-preview@4
         inputs:
           cliVersion: 'WIN_23.10.8753.32995'
           cliNupkgPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\UiPath.CLI.Windows.23.10.8753.32995.nupkg'
 
-      - task: UiPathPack@4
+      - task: UiPathPack-preview@4
         inputs:
           versionType: 'AutoVersion'
           projectJsonPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\Test_project\TestInsertimageWindows\project.json'
           outputType: 'Process'
-          orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
+          orchestratorConnection: 'UiPath Cloud Connection for marianplatonov'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
 
-      - task: UiPathDeploy@4
+      - task: UiPathDeploy-preview@4
         inputs:
-          orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
-          createProcess: true
-          folderName: 'AzureDevOps'
+          orchestratorConnection: 'UiPath Cloud Connection for marianplatonov'
           packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
+          folderName: 'AzureDevOps'
           traceLevel: 'Verbose'
-      
