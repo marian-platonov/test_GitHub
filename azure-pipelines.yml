@@ -32,12 +32,14 @@ stages:
       - task: UiPathPack@4
         inputs:
           versionType: 'CurrentVersion'
-          projectJsonPath: 'C:\Users\marian.platonov\Desktop\Configurations and Libraries\Test2310ProcessWith2310Library\project.json'
+          projectJsonPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\Test_project\TestInsertimageWindows\project.json'
           outputType: 'Process'
           orchestratorConnection: 'UiPath Cloud marianplatonov'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
-      
+
+
+
       - task: UiPathDeploy@4
         inputs:
           orchestratorConnection: 'UiPath Cloud marianplatonov'
