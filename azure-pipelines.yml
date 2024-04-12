@@ -19,11 +19,8 @@ stages:
 - stage: Build
   jobs:
   - job: PackAndDeployProcess
-    pool: 
-    
-      name: 'Azure Pipelines' # Update this if using dedicated build pool
-      vmImage:
-      demands: npm
+    pool: Default # Update this if using dedicated build pool
+
 
     workspace:
       clean: all
