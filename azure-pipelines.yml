@@ -19,7 +19,12 @@ stages:
 - stage: Build
   jobs:
   - job: PackAndDeployProcess
-    pool: Default # Update this if using dedicated build pool
+    pool: 
+    
+      name: Default # Update this if using dedicated build pool
+      vmImage:
+      demands: npm
+
     workspace:
       clean: all
     steps:
