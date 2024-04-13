@@ -47,3 +47,13 @@ stages:
           packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
           folderName: 'AzureDevOps'
           traceLevel: 'Verbose'
+
+      - task: UiPathTest-preview@4
+        inputs:
+          testTarget: 'TestProject'
+          orchestratorConnection: 'UiPath Cloud Connection for marianplatonov'
+          testProjectPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\TestAutomationProject3.1.0.145194094\content\project.json'
+          folderName: 'Test Cases'
+          testReportDestination: '$(Build.ArtifactStagingDirectory)\drop'
+          traceLevel: 'Verbose'
+          attachRobotLogs: true
