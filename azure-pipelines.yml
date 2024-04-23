@@ -35,7 +35,7 @@ stages:
       - task: UiPathPack@4
         inputs:
           versionType: 'AutoVersion'
-          projectJsonPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\Test_project\TestInsertimageWindows\project.json'
+          projectJsonPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\uipath-test-cicd1025.1.1.16\content\project.json'
           outputType: 'Process'
           orchestratorConnection: 'UiPathOnPremiseOrchestrator'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
