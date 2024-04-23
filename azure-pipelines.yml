@@ -31,27 +31,27 @@ stages:
         inputs:
           cliVersion: 'WIN_23.10.8753.32995'
           cliNupkgPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\UiPath.CLI.Windows.23.10.8753.32995.nupkg'
-
-      - task: UiPathPack-preview@4
+      
+      - task: UiPathPack@4
         inputs:
           versionType: 'AutoVersion'
           projectJsonPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\Test_project\TestInsertimageWindows\project.json'
           outputType: 'Process'
-          orchestratorConnection: 'UiPath Cloud Connection for marianplatonov'
+          orchestratorConnection: 'UiPathOnPremiseOrchestrator'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
 
-      - task: UiPathDeploy-preview@4
+      - task: UiPathDeploy@4
         inputs:
-          orchestratorConnection: 'UiPath Cloud Connection for marianplatonov'
+          orchestratorConnection: 'UiPathOnPremiseOrchestrator'
           packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
           folderName: 'AzureDevOps'
           traceLevel: 'Verbose'
 
-      - task: UiPathTest-preview@4
+      - task: UiPathTest@4
         inputs:
           testTarget: 'TestProject'
-          orchestratorConnection: 'UiPath Cloud Connection for marianplatonov'
+          orchestratorConnection: 'UiPathOnPremiseOrchestrator'
           testProjectPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\TestAutomationProject3.1.0.145194094\content\project.json'
           folderName: 'Test Cases'
           testReportDestination: '$(Build.ArtifactStagingDirectory)\drop'
