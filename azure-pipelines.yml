@@ -25,12 +25,15 @@ stages:
     workspace:
       clean: all
     steps:
+      - task: UiPathInstallPlatform@4
+        inputs:
+          cliVersion: 'WIN_23.10.8894.39673'
     
       #- task: UiPathInstallPlatform@4  # This installs required exes. Not necessary if using a dedicated build machine.
-      - task: UiPathInstallPlatform-preview@4
-        inputs:
-          cliVersion: 'WIN_23.10.8753.32995'
-          cliNupkgPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\UiPath.CLI.Windows.23.10.8753.32995.nupkg'
+      #- task: UiPathInstallPlatform-preview@4
+        #inputs:
+          #cliVersion: 'WIN_23.10.8753.32995'
+          #cliNupkgPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\UiPath.CLI.Windows.23.10.8753.32995.nupkg'
           #cliNupkgPath: '$(Agent.ToolsDirectory)\nupkg\UiPath.CLI.Windows.23.10.8753.32995.nupkg'
 
       - task: UiPathPack-preview@4
