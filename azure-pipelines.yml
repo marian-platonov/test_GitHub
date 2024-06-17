@@ -28,7 +28,15 @@ stages:
       - task: UiPathInstallPlatform@4
         inputs:
           cliVersion: 'WIN_23.10.8894.39673'
-    
+          
+      - task: UiPathPack@4
+        inputs:
+          versionType: 'AutoVersion'
+          projectJsonPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\Test_project\TestInsertimageWindows\project.json'
+          orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
+          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+          traceLevel: 'Verbose'
+      
       #- task: UiPathInstallPlatform@4  # This installs required exes. Not necessary if using a dedicated build machine.
       #- task: UiPathInstallPlatform-preview@4
         #inputs:
@@ -36,14 +44,14 @@ stages:
           #cliNupkgPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\UiPath.CLI.Windows.23.10.8753.32995.nupkg'
           #cliNupkgPath: '$(Agent.ToolsDirectory)\nupkg\UiPath.CLI.Windows.23.10.8753.32995.nupkg'
 
-      - task: UiPathPack-preview@4
-        inputs:
-          versionType: 'AutoVersion'
-          projectJsonPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\Test_project\TestInsertimageWindows\project.json'
-          outputType: 'Process'
-          orchestratorConnection: 'UiPath Cloud Connection for marianplatonov'
-          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
-          traceLevel: 'Verbose'
+      #- task: UiPathPack-preview@4
+        #inputs:
+          #versionType: 'AutoVersion'
+          #projectJsonPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\Test_project\TestInsertimageWindows\project.json'
+          #outputType: 'Process'
+          #orchestratorConnection: 'UiPath Cloud Connection for marianplatonov'
+          #outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+          #traceLevel: 'Verbose'
 
       - task: UiPathDeploy-preview@4
         inputs:
