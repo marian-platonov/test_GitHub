@@ -28,11 +28,12 @@ stages:
       - task: UiPathInstallPlatform@4
         inputs:
           cliVersion: 'WIN_23.10.8894.39673'
+        
           
       - task: UiPathPack@4
         inputs:
           versionType: 'AutoVersion'
-          projectJsonPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\Test_project\TestInsertimageWindows\project.json'
+          projectJsonPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\Case 02418547\Cisco Item Creation - CE\project.json'
           orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
