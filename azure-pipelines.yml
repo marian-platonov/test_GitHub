@@ -35,13 +35,15 @@ stages:
         inputs:
           cliVersion: 'WIN_23.10.8894.39673'
       
-      - task: UiPathTest@4
+          
+      - task: UiPathTest-preview@4
         inputs:
           testTarget: 'TestSet'
-          orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
+          orchestratorConnection: 'UiPath Cloud Connection for marianplatonov'
           testSet: 'TestAutomationProject3'
           folderName: 'Test Cases'
-          retryCount: 1
+          testReportDestination: '$(Build.ArtifactStagingDirectory)\drop'
+          retryCount: 2
           traceLevel: 'Verbose'
           attachRobotLogs: true
           
