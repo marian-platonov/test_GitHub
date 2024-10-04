@@ -36,24 +36,24 @@ stages:
           cliVersion: 'WIN_23.10.8894.39673'
       
           
-      - task: UiPathTest-preview@4
-        inputs:
-          testTarget: 'TestSet'
-          orchestratorConnection: 'UiPath Cloud Connection for marianplatonov'
-          testSet: 'TestAutomationProject3'
-          folderName: 'Test Cases'
-          testReportDestination: '$(Build.ArtifactStagingDirectory)\drop'
-          retryCount: 2
-          traceLevel: 'Verbose'
-          attachRobotLogs: true
-          
-      #- task: UiPathPack@4
+      #- task: UiPathTest-preview@4
         #inputs:
-         # versionType: 'AutoVersion'
-        #  projectJsonPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\Test_project\BlankProcess39\project.json'
-         # orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
-         # outputPath: '$(Build.ArtifactStagingDirectory)\Output'
-         # traceLevel: 'Verbose'
+          #testTarget: 'TestSet'
+          #orchestratorConnection: 'UiPath Cloud Connection for marianplatonov'
+          #testSet: 'TestAutomationProject3'
+         # folderName: 'Test Cases'
+         # testReportDestination: '$(Build.ArtifactStagingDirectory)\drop'
+         # retryCount: 2
+          #traceLevel: 'Verbose'
+         # attachRobotLogs: true
+          
+      - task: UiPathPack@4
+        inputs:
+         versionType: 'AutoVersion'
+         projectJsonPath: '"C:\Users\marian.platonov\Downloads\content - Copy\project.json"'
+         orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
+         outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+         traceLevel: 'Verbose'
       
       #- task: UiPathInstallPlatform@4  # This installs required exes. Not necessary if using a dedicated build machine.
       #- task: UiPathInstallPlatform-preview@4
