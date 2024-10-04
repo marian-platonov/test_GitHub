@@ -50,7 +50,7 @@ stages:
       - task: UiPathPack@4
         inputs:
          versionType: 'AutoVersion'
-         projectJsonPath: '"C:\Users\marian.platonov\Downloads\content - Copy\project.json"'
+         projectJsonPath: 'C:\Users\marian.platonov\Downloads\ID205_Device_ReturnStatus_Snowflake_Main.1.0.0.4\ID205_Device_ReturnStatus_Snowflake_Main.1.0.0.4\content\project.json'
          orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
          traceLevel: 'Verbose'
