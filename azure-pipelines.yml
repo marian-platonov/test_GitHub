@@ -54,6 +54,7 @@ stages:
          orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
          traceLevel: 'Verbose'
+         displayName: 'Packing process'
       
       #- task: UiPathInstallPlatform@4  # This installs required exes. Not necessary if using a dedicated build machine.
       #- task: UiPathInstallPlatform-preview@4
