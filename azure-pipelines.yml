@@ -51,11 +51,11 @@ stages:
       - task: UiPathPack@4
         inputs:
          versionType: 'AutoVersion'
-         projectJsonPath: 'C:\Users\marian.platonov\Downloads\ID205_Device_ReturnStatus_Snowflake_Main.1.0.0.4\ID205_Device_ReturnStatus_Snowflake_Main.1.0.0.4\content\project.json'
+         projectJsonPath: 'C:\Users\marian.platonov\Downloads\content\content\project.json'
          orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
          traceLevel: 'Verbose'
-         displayName: 'Packing process'
+        displayName: 'Packing process with the UiPathPack@4 task'
       
       #- task: UiPathInstallPlatform@4  # This installs required exes. Not necessary if using a dedicated build machine.
       #- task: UiPathInstallPlatform-preview@4
