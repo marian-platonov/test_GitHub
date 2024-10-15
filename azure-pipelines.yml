@@ -51,7 +51,7 @@ stages:
       - task: UiPathPack@4
         inputs:
          versionType: 'AutoVersion'
-         projectJsonPath: 'C:\Users\marian.platonov\Downloads\content\content\project.json'
+         projectJsonPath: 'C:\Users\marian.platonov\Downloads\content (1)\content\project.json'
          orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
          traceLevel: 'Verbose'
