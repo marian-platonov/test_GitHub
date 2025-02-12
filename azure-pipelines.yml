@@ -26,11 +26,17 @@ stages:
       clean: all
     steps:
       # Install the .net 6.0.32
+      #- task: UseDotNet@2
+        #inputs:
+          #packageType: 'runtime'
+          #version: '6.0.32'
+
       - task: UseDotNet@2
         inputs:
           packageType: 'runtime'
-          version: '6.0.32'
-
+          version: '8.0.13'
+        displayName: 'Installing .NET Runtime 8.0.13'
+        
       #- task: UiPathInstallPlatform@5
         #inputs:
           #cliVersion: 'WIN_23.10.8894.39673'
@@ -41,6 +47,16 @@ stages:
         inputs:
           cliVersion: 'WIN_24.10.9050.17872'
         displayName: 'Installing UiPath Windows CLI.24.10.9050.17872'
+        
+      - task: UiPathPack@5
+        inputs:
+          versionType: 'AutoVersion'
+          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess49\project.json'
+          outputType: 'Process'
+          orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
+          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+          traceLevel: 'Verbose'
+        displayName: 'Packing process with the UiPathPack@5 task'
 
       #- task: UiPathTest-preview@4
         #inputs:
@@ -53,14 +69,14 @@ stages:
           #traceLevel: 'Verbose'
          # attachRobotLogs: true
           
-      - task: UiPathPack@4
-        inputs:
-         versionType: 'AutoVersion'
-         projectJsonPath: 'C:\Users\marian.platonov\Downloads\content (1)\content\project.json'
-         orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
-         outputPath: '$(Build.ArtifactStagingDirectory)\Output'
-         traceLevel: 'Verbose'
-        displayName: 'Packing process with the UiPathPack@4 task'
+      #- task: UiPathPack@4
+        #inputs:
+         #versionType: 'AutoVersion'
+         #projectJsonPath: 'C:\Users\marian.platonov\Downloads\content (1)\content\project.json'
+         #orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
+         #outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+         #traceLevel: 'Verbose'
+        #displayName: 'Packing process with the UiPathPack@4 task'
       
       #- task: UiPathInstallPlatform@4  # This installs required exes. Not necessary if using a dedicated build machine.
       #- task: UiPathInstallPlatform-preview@4
