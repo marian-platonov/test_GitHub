@@ -55,6 +55,7 @@ stages:
           Contents: 'nuget.config'
           TargetFolder: '$(Agent.ToolsDirectory)/uipcli'
           OverWrite: true
+        displayName: 'Copy nuget.config file From SourceFolder to TargetFolder'
         
       - task: UiPathPack@5
         inputs:
