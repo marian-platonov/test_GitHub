@@ -42,10 +42,9 @@ stages:
           #cliVersion: 'WIN_23.10.8894.39673'
           #cliNupkgPath: '$(Agent.ToolsDirectory)\nupkg\UiPath.CLI.xx.xx.xx.nupkg' If not using the default version, UiPath CLI nupkg needs to be downloaded manually and placed it inside the path e.g $(Agent.ToolsDirectory)\nupkg\UiPath.CLI.xx.xx.xx.nupkg
         #displayName: 'Installing UiPath CLI'
-      
       - task: UiPathInstallPlatform@5
         inputs:
-          cliVersion: 'WIN_24.10.9050.17872'
+          cliVersion: 'WIN_24.12.9166.24491'
         displayName: 'Installing UiPath Windows CLI.24.10.9050.17872'
 
 
