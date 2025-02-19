@@ -55,15 +55,14 @@ stages:
           TargetFolder: '$(Agent.ToolsDirectory)/uipcli'
           OverWrite: true
         displayName: 'Copy nuget.config file From SourceFolder to TargetFolder'
-        
+
       - task: UiPathPack@5
         inputs:
           versionType: 'AutoVersion'
           projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess50\project.json'
-          outputType: 'Process'
+          disableBuiltInNugetFeeds: true
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
-          disableBuiltInNugetFeeds: true
           traceLevel: 'Verbose'
         displayName: 'Packing process with the UiPathPack@5 task'
 
