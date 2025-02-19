@@ -51,7 +51,7 @@ stages:
 
       - task: CopyFiles@2
         inputs:
-          SourceFolder: '$(Build.SourcesDirectory)'
+          SourceFolder: 'C:\azagent'
           Contents: 'nuget.config'
           TargetFolder: '$(Agent.ToolsDirectory)/uipcli'
           OverWrite: true
@@ -59,10 +59,11 @@ stages:
       - task: UiPathPack@5
         inputs:
           versionType: 'AutoVersion'
-          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess49\project.json'
+          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess50\project.json'
           outputType: 'Process'
           orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+          disableBuiltInNugetFeeds: true
           traceLevel: 'Verbose'
         displayName: 'Packing process with the UiPathPack@5 task'
 
