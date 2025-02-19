@@ -61,7 +61,7 @@ stages:
           versionType: 'AutoVersion'
           projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess50\project.json'
           outputType: 'Process'
-          orchestratorConnection: 'UiPathCloudmarianplatonovNewConnection'
+          orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           disableBuiltInNugetFeeds: true
           traceLevel: 'Verbose'
