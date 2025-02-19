@@ -47,6 +47,14 @@ stages:
         inputs:
           cliVersion: 'WIN_24.10.9050.17872'
         displayName: 'Installing UiPath Windows CLI.24.10.9050.17872'
+
+
+      - task: CopyFiles@2
+        inputs:
+          SourceFolder: '$(Build.SourcesDirectory)'
+          Contents: 'nuget.config'
+          TargetFolder: '$(Agent.ToolsDirectory)/uipcli'
+          OverWrite: true
         
       - task: UiPathPack@5
         inputs:
