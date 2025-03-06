@@ -45,22 +45,32 @@ stages:
 
       - task: UiPathInstallPlatform@5
         inputs:
-          cliVersion: 'WIN_24.12.9166.24491'
+          cliVersion: 'WIN_24.10.9050.17872'
         displayName: 'Installing UiPath Windows CLI.24.10.9050.17872'
-        
-      - task: CopyFiles@2
-        inputs:
-          SourceFolder: 'C:\azagent'
-          Contents: 'nuget.config'
-          TargetFolder: '$(Agent.ToolsDirectory)/uipcli'
-          OverWrite: true
-        displayName: 'Copy nuget.config file From SourceFolder to TargetFolder'
 
+      #- task: CopyFiles@2
+        #inputs:
+          #SourceFolder: 'C:\azagent'
+          #Contents: 'nuget.config'
+          #TargetFolder: '$(Agent.ToolsDirectory)/uipcli'
+          #OverWrite: true
+        #displayName: 'Copy nuget.config file From SourceFolder to TargetFolder'
+
+      #- task: UiPathPack@5
+        #inputs:
+          #versionType: 'AutoVersion'
+          #projectJsonPath: 'C:\Users\marian.platonov\Desktop\Customer Issues\Files\IAMADAccessManagementPerformer\IAMADAccessManagementPerformer\project.json'
+          #disableBuiltInNugetFeeds: true
+          #orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
+          #outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+          #traceLevel: 'Verbose'
+        #displayName: 'Packing process with the UiPathPack@5 task'
+        
       - task: UiPathPack@5
         inputs:
           versionType: 'AutoVersion'
-          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess50\project.json'
-          disableBuiltInNugetFeeds: true
+          projectJsonPath: 'C:\Users\marian.platonov\Desktop\Customer Issues\Files\IAMADAccessManagementPerformer\IAMADAccessManagementPerformer\project.json'
+          disableBuiltInNugetFeeds: false
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
