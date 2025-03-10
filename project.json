@@ -1,5 +1,6 @@
 {
   "name": "BlankProcess6",
+  "projectId": "d73cb1c5-f733-49b7-9d78-bca5915ad052",
   "description": "Blank Process",
   "main": "Main.xaml",
   "dependencies": {
@@ -19,7 +20,7 @@
     "netFrameworkLazyLoading": false,
     "isPausable": true,
     "isAttended": false,
-    "requiresUserInteraction": true,
+    "requiresUserInteraction": false,
     "supportsPersistence": false,
     "workflowSerialization": "DataContract",
     "excludedLoggedData": [
@@ -43,7 +44,7 @@
       "ignoredFiles": []
     },
     "fileInfoCollection": [],
-    "modernBehavior": true
+    "saveToCloud": false
   },
   "expressionLanguage": "VisualBasic",
   "entryPoints": [
