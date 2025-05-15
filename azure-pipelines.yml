@@ -33,10 +33,14 @@ stages:
 
       - task: UseDotNet@2
         inputs:
-          packageType: 'runtime'
-          version: '8.0.13'
-        displayName: 'Installing .NET Runtime 8.0.13'
-        
+          packageType: 'sdk'
+          version: '6.0.428'
+      #- task: UseDotNet@2
+        #inputs:
+          #packageType: 'runtime'
+          #version: '8.0.13'
+        #displayName: 'Installing .NET Runtime 8.0.13'
+          
       #- task: UiPathInstallPlatform@5
         #inputs:
           #cliVersion: 'WIN_23.10.8894.39673'
