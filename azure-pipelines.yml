@@ -25,11 +25,11 @@ stages:
     workspace:
       clean: all
     steps:
-      # Install the .net 6.0.36
+      # Install the .net 6.0.32
       - task: UseDotNet@2
         inputs:
           packageType: 'runtime'
-          version: '6.0.36'
+          version: '6.0.32'
 
       #- task: UseDotNet@2
         #inputs:
