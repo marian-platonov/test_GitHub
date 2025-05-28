@@ -35,20 +35,20 @@ stages:
           #packageType: 'sdk'
           #version: '6.0.x'
         #displayName: 'Installing .NET SDK 6.0.x'
-      #- task: UseDotNet@2
-        #inputs:
-          #packageType: 'sdk'
-          #version: '6.0.x'
-        #displayName: 'Installing .NET SDK 6.0.x'
+      - task: UseDotNet@2
+        inputs:
+          packageType: 'sdk'
+          version: '8.0.x'
+        displayName: 'Installing .NET SDK 8.0.x'
       #- task: UseDotNet@2
         #inputs:
           #packageType: 'sdk'
           #version: '6.0.428'
-      - task: UseDotNet@2
-        inputs:
-          packageType: 'runtime'
-          version: '8.0.13'
-        displayName: 'Installing .NET Runtime 8.0.13'
+      #- task: UseDotNet@2
+        #inputs:
+          #packageType: 'runtime'
+          #version: '8.0.13'
+        #displayName: 'Installing .NET Runtime 8.0.13'
           
       #- task: UiPathInstallPlatform@5
         #inputs:
