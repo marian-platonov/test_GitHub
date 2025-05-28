@@ -35,20 +35,20 @@ stages:
           #packageType: 'sdk'
           #version: '6.0.x'
         #displayName: 'Installing .NET SDK 6.0.x'
-      - task: UseDotNet@2
-        inputs:
-          packageType: 'sdk'
-          version: '6.0.x'
-        displayName: 'Installing .NET SDK 6.0.x'
+      #- task: UseDotNet@2
+        #inputs:
+          #packageType: 'sdk'
+          #version: '6.0.x'
+        #displayName: 'Installing .NET SDK 6.0.x'
       #- task: UseDotNet@2
         #inputs:
           #packageType: 'sdk'
           #version: '6.0.428'
-      #- task: UseDotNet@2
-        #inputs:
-          #packageType: 'runtime'
-          #version: '8.0.13'
-        #displayName: 'Installing .NET Runtime 8.0.13'
+      - task: UseDotNet@2
+        inputs:
+          packageType: 'runtime'
+          version: '8.0.13'
+        displayName: 'Installing .NET Runtime 8.0.13'
           
       #- task: UiPathInstallPlatform@5
         #inputs:
@@ -82,12 +82,20 @@ stages:
       - task: UiPathPack@5
         inputs:
           versionType: 'AutoVersion'
-          projectJsonPath: 'C:\Users\marian.platonov\Desktop\Customer Issues\Files\IAMADAccessManagementPerformer\IAMADAccessManagementPerformer\project.json'
+          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess68\project.json'
           disableBuiltInNugetFeeds: false
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
         displayName: 'Packing process with the UiPathPack@5 task'
+      
+      - task: UiPathDeploy@5
+        inputs:
+          orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
+          packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
+          folderName: 'AzureDevOps'
+          processName: 'Test DevOps Pipeline'
+          traceLevel: 'Verbose'
 
       #- task: UiPathTest-preview@4
         #inputs:
