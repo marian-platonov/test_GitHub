@@ -84,8 +84,8 @@ stages:
           #versionType: 'AutoVersion'
           #versionType: 'CurrentVersion'
           versionType: 'ManualVersion'
-          version: '1.0.2'
-          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\TestPackageRequirements\project.json'
+          version: '1.0.3'
+          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\TestPackageRequirements'
           disableBuiltInNugetFeeds: false
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
