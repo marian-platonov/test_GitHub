@@ -19,7 +19,8 @@ stages:
 - stage: Build
   jobs:
   - job: PackAndDeployProcess
-    pool: Default # Update this if using dedicated build pool
+    #pool: Default # Update this if using dedicated build pool
+    pool: Azure Pipelines
 
 
     workspace:
@@ -84,7 +85,7 @@ stages:
           #versionType: 'AutoVersion'
           #versionType: 'CurrentVersion'
           versionType: 'ManualVersion'
-          version: '1.0.3'
+          version: '1.0.4'
           projectJsonPath: 'C:\Users\marian.platonov\Downloads\PipelineBug-tcb\PipelineBug-tcb\ECOI_UserDownload-from-studio - Copy\content'
           disableBuiltInNugetFeeds: false
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
@@ -97,7 +98,7 @@ stages:
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
           folderName: 'AzureDevOps'
-          processName: 'TestPackageRequirements'
+          processName: 'CustomersTestPackageRequirements'
           traceLevel: 'Verbose'
 
       #- task: UiPathTest-preview@4
