@@ -82,7 +82,7 @@ stages:
       - task: UiPathPack@5
         inputs:
           versionType: 'AutoVersion'
-          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess68\project.json'
+          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\TestPackageRequirements'
           disableBuiltInNugetFeeds: false
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
@@ -94,7 +94,7 @@ stages:
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
           folderName: 'AzureDevOps'
-          processName: 'Test DevOps Pipeline'
+          processName: 'TestPackageRequirements'
           traceLevel: 'Verbose'
 
       #- task: UiPathTest-preview@4
