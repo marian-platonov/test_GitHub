@@ -85,7 +85,7 @@ stages:
           #versionType: 'CurrentVersion'
           versionType: 'ManualVersion'
           version: '1.0.3'
-          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\TestPackageRequirements'
+          projectJsonPath: 'C:\Users\marian.platonov\Downloads\PipelineBug-tcb\PipelineBug-tcb\ECOI_UserDownload-from-studio - Copy\content'
           disableBuiltInNugetFeeds: false
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
