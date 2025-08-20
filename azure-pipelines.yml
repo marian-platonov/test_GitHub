@@ -19,8 +19,8 @@ stages:
 - stage: Build
   jobs:
   - job: PackAndDeployProcess
-    #pool: Default # Update this if using dedicated build pool
-    pool: Azure Pipelines
+    pool: Default # Update this if using dedicated build pool
+    #pool: Azure Pipelines
 
 
     workspace:
