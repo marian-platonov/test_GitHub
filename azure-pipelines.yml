@@ -59,8 +59,8 @@ stages:
 
       - task: UiPathInstallPlatform@5
         inputs:
-          cliVersion: 'WIN_24.10.9050.17872'
-        displayName: 'Installing UiPath Windows CLI.24.10.9050.17872'
+          cliVersion: 'WIN_23.10.9076.19285'
+        displayName: 'Installing UiPath Windows CLI.23.10.9076.19285'
 
       #- task: CopyFiles@2
         #inputs:
@@ -85,13 +85,15 @@ stages:
           #versionType: 'AutoVersion'
           #versionType: 'CurrentVersion'
           versionType: 'ManualVersion'
-          version: '1.0.4'
-          projectJsonPath: 'C:\Users\marian.platonov\Downloads\PipelineBug-tcb\PipelineBug-tcb\ECOI_UserDownload-from-studio - Copy\content'
+          version: '1.0.2'
+          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess79'
           disableBuiltInNugetFeeds: false
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
         displayName: 'Packing process with the UiPathPack@5 task'
+
+      
       
       - task: UiPathDeploy@5
         inputs:
