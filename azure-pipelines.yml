@@ -85,12 +85,14 @@ stages:
           #versionType: 'AutoVersion'
           #versionType: 'CurrentVersion'
           versionType: 'ManualVersion'
-          version: '1.0.2'
+          version: '1.0.3'
           projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess79'
           disableBuiltInNugetFeeds: false
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
+          releaseNotes: 'New release test1'
+          enablePackageMetadata: true
         displayName: 'Packing process with the UiPathPack@5 task'
 
       
