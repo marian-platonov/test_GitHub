@@ -93,7 +93,6 @@ stages:
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
           releaseNotes: 'New release test2'
-          enablePackageMetadata: true
         displayName: 'Packing process with the UiPathPack@5 task'
 
       
