@@ -89,7 +89,8 @@ stages:
           version: '1.0.4'
           projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess79'
           disableBuiltInNugetFeeds: false
-          orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
+          //orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
+          orchestratorConnection: 'Customer_Demo'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
           releaseNotes: 'New release test2'
@@ -99,7 +100,8 @@ stages:
       
       - task: UiPathDeploy@5
         inputs:
-          orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
+          //orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
+          orchestratorConnection: 'Customer_Demo'
           packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
           folderName: 'AzureDevOps'
           processName: 'CustomersTestPackageRequirements'
