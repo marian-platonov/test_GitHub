@@ -86,11 +86,10 @@ stages:
           #versionType: 'AutoVersion'
           #versionType: 'CurrentVersion'
           versionType: 'ManualVersion'
-          version: '1.0.4'
-          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankProcess79'
+          version: '1.0.2'
+          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\O365SaveEmailAttachements'
           disableBuiltInNugetFeeds: false
-          //orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
-          orchestratorConnection: 'Customer_Demo'
+          orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           traceLevel: 'Verbose'
           releaseNotes: 'New release test2'
@@ -100,8 +99,7 @@ stages:
       
       - task: UiPathDeploy@5
         inputs:
-          //orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
-          orchestratorConnection: 'Customer_Demo'
+          orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
           folderName: 'AzureDevOps'
           processName: 'CustomersTestPackageRequirements'
