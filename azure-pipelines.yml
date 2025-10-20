@@ -36,11 +36,28 @@ stages:
           #packageType: 'sdk'
           #version: '6.0.x'
         #displayName: 'Installing .NET SDK 6.0.x'
-      - task: UseDotNet@2
+
+      - task: PowerShell@2
         inputs:
-          packageType: 'sdk'
-          version: '8.0.x'
-        displayName: 'Installing .NET SDK 8.0.x'
+          targetType: 'inline'
+          script: |
+            # Test access_token retrieval
+            
+            $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]"
+            $headers.Add("Content-Type", "application/x-www-form-urlencoded")
+            
+            $body = "grant_type=client_credentials&client_id=82ca2870-de0f-4329-97db-45485ee544fc&client_secret=%3Frd(HhmkOjkC8LLn&scope=OR.Assets%20OR.BackgroundTasks%20OR.Execution%20OR.Folders%20OR.Jobs%20OR.Machines.Read%20OR.Monitoring%20OR.Queues%20OR.Robots.Read%20OR.Settings.Read%20OR.TestSetExecutions%20OR.TestSets%20OR.TestSetSchedules%20OR.Users.Read"
+            
+            $response = Invoke-RestMethod 'https://cloud.uipath.com/identity_/connect/token' -Method 'POST' -Headers $headers -Body $body
+            $response | ConvertTo-Json
+          errorActionPreference: 'silentlyContinue'
+          warningPreference: 'silentlyContinue'
+          verbosePreference: 'silentlyContinue'
+      #- task: UseDotNet@2
+       # inputs:
+         # packageType: 'sdk'
+        #  version: '8.0.x'
+       # displayName: 'Installing .NET SDK 8.0.x'
       #- task: UseDotNet@2
         #inputs:
           #packageType: 'sdk'
@@ -57,10 +74,10 @@ stages:
           #cliNupkgPath: '$(Agent.ToolsDirectory)\nupkg\UiPath.CLI.xx.xx.xx.nupkg' If not using the default version, UiPath CLI nupkg needs to be downloaded manually and placed it inside the path e.g $(Agent.ToolsDirectory)\nupkg\UiPath.CLI.xx.xx.xx.nupkg
         #displayName: 'Installing UiPath CLI'
 
-      - task: UiPathInstallPlatform@5
-        inputs:
-          cliVersion: 'WIN_25.4.9337.28376'
-        displayName: 'Installing UiPath Windows CLI.25.4.9337.28376'
+     # - task: UiPathInstallPlatform@5
+      #  inputs:
+      #    cliVersion: 'WIN_25.4.9337.28376'
+      #  displayName: 'Installing UiPath Windows CLI.25.4.9337.28376'
 
 
       #- task: CopyFiles@2
@@ -81,30 +98,30 @@ stages:
           #traceLevel: 'Verbose'
         #displayName: 'Packing process with the UiPathPack@5 task'
         
-      - task: UiPathPack@5
-        inputs:
+     # - task: UiPathPack@5
+      #  inputs:
           #versionType: 'AutoVersion'
           #versionType: 'CurrentVersion'
-          versionType: 'ManualVersion'
-          version: '1.0.2'
-          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\O365SaveEmailAttachements'
-          disableBuiltInNugetFeeds: false
-          orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
-          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
-          traceLevel: 'Verbose'
-          releaseNotes: 'New release test2'
-        displayName: 'Packing process with the UiPathPack@5 task'
+        #  versionType: 'ManualVersion'
+         # version: '1.0.2'
+        #  projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\O365SaveEmailAttachements'
+         # disableBuiltInNugetFeeds: false
+        #  orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
+        #  outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+        #  traceLevel: 'Verbose'
+        #  releaseNotes: 'New release test2'
+       # displayName: 'Packing process with the UiPathPack@5 task'
 
       
       
-      - task: UiPathDeploy@5
-        inputs:
-          orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
-          packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
-          folderName: 'AzureDevOps'
-          processName: 'CustomersTestPackageRequirements'
-          createProcess: true
-          traceLevel: 'Verbose'
+    #  - task: UiPathDeploy@5
+     #   inputs:
+     #     orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
+     #     packagesPath: '$(Build.ArtifactStagingDirectory)\Output'
+    #      folderName: 'AzureDevOps'
+     #     processName: 'CustomersTestPackageRequirements'
+      #    createProcess: true
+      #    traceLevel: 'Verbose'
 
       #- task: UiPathTest-preview@4
         #inputs:
