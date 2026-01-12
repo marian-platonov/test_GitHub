@@ -90,6 +90,8 @@ stages:
           #OverWrite: true
         #displayName: 'Copy nuget.config file From SourceFolder to TargetFolder'
 
+        
+
       - task: UiPathInstallPlatform@6
         inputs:
           cliVersion: 'Windows.25.10.3'
@@ -98,7 +100,7 @@ stages:
         inputs:
           targetType: 'inline'
           script: |
-            $nugetConfigPath = "$(Agent.ToolsDirectory)/uipcli/nuget.config"
+            $nugetConfigPath = "$(Agent.ToolsDirectory)/nuget.config"
             
             # Ensure the directory exists
             $directory = Split-Path -Path $nugetConfigPath -Parent
@@ -121,6 +123,13 @@ stages:
             $utf8Bom = New-Object System.Text.UTF8Encoding $true
             [System.IO.File]::WriteAllText($nugetConfigPath, $xml, $utf8Bom)
             Write-Host "Created/Updated nuget.config at: $nugetConfigPath"
+
+      - task: CopyFiles@2
+        displayName: 'Copy nuget.config file From $(Agent.ToolsDirectory) to $(Agent.ToolsDirectory)/uipcli/nuget.config'
+        inputs:
+            SourceFolder: '$(Agent.ToolsDirectory)'
+            Contents: 'nuget.config'
+            TargetFolder: '$(Agent.ToolsDirectory)/uipcli'
 
       - task: UiPathPack@6
         displayName: 'Packing process with the UiPathPack@6 task'
