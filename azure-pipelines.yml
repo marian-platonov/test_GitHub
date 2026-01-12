@@ -88,6 +88,33 @@ stages:
           #OverWrite: true
         #displayName: 'Copy nuget.config file From SourceFolder to TargetFolder'
 
+
+      - task: PowerShell@2
+        displayName: 'Create or Update UiPath nuget.config'
+        inputs:
+          targetType: 'inline'
+          script: |
+            $nugetConfigPath = "$(Agent.ToolsDirectory)/uipcli/nuget.config"
+            
+            # Ensure the directory exists
+            $directory = Split-Path -Path $nugetConfigPath -Parent
+            if (-not (Test-Path -Path $directory)) {
+              New-Item -ItemType Directory -Path $directory -Force
+            }
+            
+            # Create XML content without leading whitespace
+            $xml = '<?xml version="1.0" encoding="utf-8"?>'
+            $xml += "`r`n" + '<configuration>'
+            $xml += "`r`n" + '  <packageSources>'
+            $xml += "`r`n" + '    <clear />'
+            $xml += "`r`n" + '    <add key="SLM_Nexus" value="https://repo.internal.slmbank.net:8084/repository/nuget-group-salliemae-v3/index.json" protocolVersion="3"/>'
+            $xml += "`r`n" + '  </packageSources>'
+            $xml += "`r`n" + '</configuration>'
+            
+            $utf8Bom = New-Object System.Text.UTF8Encoding $true
+            [System.IO.File]::WriteAllText($nugetConfigPath, $xml, $utf8Bom)
+            Write-Host "Created/Updated nuget.config at: $nugetConfigPath"
+
       #- task: UiPathPack@5
         #inputs:
           #versionType: 'AutoVersion'
