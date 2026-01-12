@@ -113,9 +113,9 @@ stages:
             #$xml += "`r`n" + '    <clear />'
             $xml += "`r`n" + '    <add key="SLM_Nexus" value="https://repo.internal.slmbank.net:8084/repository/nuget-group-salliemae-v3/index.json" protocolVersion="3" />'
             $xml += "`r`n" + '  </packageSources>'
-            $xml += "`r`n" + '<config>'
-            $xml += "`r`n" + '  <add key="signatureValidationMode" value="accept" />'
-            $xml += "`r`n" + '</config>'
+            $xml += "`r`n" + '  <config>'
+            $xml += "`r`n" + '    <add key="signatureValidationMode" value="accept" />'
+            $xml += "`r`n" + '  </config>'
             $xml += "`r`n" + '</configuration>'
             
             $utf8Bom = New-Object System.Text.UTF8Encoding $true
