@@ -81,6 +81,7 @@ stages:
       #  displayName: 'Installing UiPath Windows CLI.25.4.9337.28376'
 
 
+
       #- task: CopyFiles@2
         #inputs:
           #SourceFolder: 'C:\azagent'
@@ -89,7 +90,9 @@ stages:
           #OverWrite: true
         #displayName: 'Copy nuget.config file From SourceFolder to TargetFolder'
 
-
+      - task: UiPathInstallPlatform@6
+        inputs:
+          cliVersion: 'Windows.25.10.3'
       - task: PowerShell@2
         displayName: 'Create or Update UiPath nuget.config'
         inputs:
@@ -107,9 +110,12 @@ stages:
             $xml = '<?xml version="1.0" encoding="utf-8"?>'
             $xml += "`r`n" + '<configuration>'
             $xml += "`r`n" + '  <packageSources>'
-            $xml += "`r`n" + '    <clear />'
-            $xml += "`r`n" + '    <add key="SLM_Nexus" value="https://repo.internal.slmbank.net:8084/repository/nuget-group-salliemae-v3/index.json" protocolVersion="3"/>'
+            #$xml += "`r`n" + '    <clear />'
+            $xml += "`r`n" + '    <add key="SLM_Nexus" value="https://repo.internal.slmbank.net:8084/repository/nuget-group-salliemae-v3/index.json" protocolVersion="3" />'
             $xml += "`r`n" + '  </packageSources>'
+            $xml += "`r`n" + '<config>'
+            $xml += "`r`n" + '  <add key="signatureValidationMode" value="accept" />'
+            $xml += "`r`n" + '</config>'
             $xml += "`r`n" + '</configuration>'
             
             $utf8Bom = New-Object System.Text.UTF8Encoding $true
@@ -119,9 +125,9 @@ stages:
       - task: UiPathPack@6
         displayName: 'Packing process with the UiPathPack@6 task'
         inputs:
-          projectJsonPath: 'C:\Users\marian.platonov\Documents\UiPath\BlankLibrary7\project.json'
+          projectJsonPath: 'C:\\Users\\marian.platonov\\Documents\\UiPath\\BlankLibrary7\\project.json'
           versionType: 'CurrentVersion'
-          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+          outputPath: '$(Build.ArtifactStagingDirectory)\\Output'
           disableBuiltInNugetFeeds: true
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           traceLevel: 'Verbose'
