@@ -90,11 +90,15 @@ stages:
           #OverWrite: true
         #displayName: 'Copy nuget.config file From SourceFolder to TargetFolder'
 
-        
-
       - task: UiPathInstallPlatform@6
         inputs:
-          cliVersion: 'Windows.25.10.3'
+          cliVersion: 'CustomVersion'
+          cliNupkgPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\UiPath.CLI.Windows.25.4.9301.33152.nupkg'
+        
+
+      #- task: UiPathInstallPlatform@6
+        #inputs:
+          #cliVersion: 'Windows.25.10.3'
       - task: PowerShell@2
         displayName: 'Create or Update UiPath nuget.config'
         inputs:
