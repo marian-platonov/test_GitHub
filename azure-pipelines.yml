@@ -135,24 +135,15 @@ stages:
             #Contents: 'nuget.config'
             #TargetFolder: '$(Agent.ToolsDirectory)/uipcli'
 
-      - task: UiPathSolutionPack@6
+      - task: UiPathPack@6
+        displayName: 'Packing process with the UiPathPack@6 task'
         inputs:
-          solutionPath: 'C:\\Users\\marian.platonov\\Documents\\UiPath\\BlankLibrary7'
-          version: '1.0.99'
-          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+          projectJsonPath: 'C:\\Users\\marian.platonov\\Documents\\UiPath\\BlankProcess93\\project.json'
+          versionType: 'CurrentVersion'
+          outputPath: '$(Build.ArtifactStagingDirectory)\\Output'
           disableBuiltInNugetFeeds: true
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           traceLevel: 'Verbose'
-
-      #- task: UiPathPack@6
-       # displayName: 'Packing process with the UiPathPack@6 task'
-       # inputs:
-        #  projectJsonPath: 'C:\\Users\\marian.platonov\\Documents\\UiPath\\BlankLibrary7\\project.json'
-        #  versionType: 'CurrentVersion'
-        #  outputPath: '$(Build.ArtifactStagingDirectory)\\Output'
-        #  disableBuiltInNugetFeeds: true
-        #  orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
-        #  traceLevel: 'Verbose'
 
       #- task: UiPathPack@5
         #inputs:
