@@ -145,7 +145,7 @@ stages:
           versionType: 'AutoVersion'
           outputPath: '$(Build.ArtifactStagingDirectory)\Output'
           outputType: 'Library'
-          splitOutput: true
+          splitOutput: false
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           traceLevel: 'Verbose'
       
