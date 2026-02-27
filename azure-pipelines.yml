@@ -95,7 +95,9 @@ stages:
           #cliVersion: 'CustomVersion'
           #cliNupkgPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\UiPath.CLI.Windows.25.10.5.nupkg'
         
-      
+      - task: UiPathInstallPlatform@6
+        inputs:
+          cliVersion: 'Windows.25.10.7'
 
       #- task: UiPathInstallPlatform@6
         #inputs:
@@ -135,6 +137,7 @@ stages:
             #SourceFolder: '$(Agent.ToolsDirectory)'
             #Contents: 'nuget.config'
             #TargetFolder: '$(Agent.ToolsDirectory)/uipcli'
+
 
       - task: UiPathPack@6
         inputs:
