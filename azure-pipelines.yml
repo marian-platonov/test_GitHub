@@ -90,11 +90,12 @@ stages:
           #OverWrite: true
         #displayName: 'Copy nuget.config file From SourceFolder to TargetFolder'
 
-      - task: UiPathInstallPlatform@6
-        inputs:
-          cliVersion: 'CustomVersion'
-          cliNupkgPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\UiPath.CLI.Windows.25.10.5.nupkg'
+      #- task: UiPathInstallPlatform@6
+        #inputs:
+          #cliVersion: 'CustomVersion'
+          #cliNupkgPath: 'C:\Users\marian.platonov\Desktop\UiPath CLI\UiPath.CLI.Windows.25.10.5.nupkg'
         
+      
 
       #- task: UiPathInstallPlatform@6
         #inputs:
@@ -136,14 +137,24 @@ stages:
             #TargetFolder: '$(Agent.ToolsDirectory)/uipcli'
 
       - task: UiPathPack@6
-        displayName: 'Packing process with the UiPathPack@6 task'
         inputs:
-          projectJsonPath: 'C:\\Users\\marian.platonov\\Documents\\UiPath\\BlankProcess93\\project.json'
-          versionType: 'CurrentVersion'
-          outputPath: '$(Build.ArtifactStagingDirectory)\\Output'
-          disableBuiltInNugetFeeds: true
+          projectJsonPath: 'C:\\Users\\marian.platonov\\Downloads\\Issue 2\\IPACEUiPathGenericLibrary'
+          versionType: 'AutoVersion'
+          outputPath: '$(Build.ArtifactStagingDirectory)\Output'
+          outputType: 'Library'
+          splitOutput: true
           orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
           traceLevel: 'Verbose'
+      
+      #- task: UiPathPack@6
+        #displayName: 'Packing process with the UiPathPack@6 task'
+        #inputs:
+          #projectJsonPath: 'C:\\Users\\marian.platonov\\Documents\\UiPath\\BlankProcess93\\project.json'
+          #versionType: 'CurrentVersion'
+          #outputPath: '$(Build.ArtifactStagingDirectory)\\Output'
+          #disableBuiltInNugetFeeds: true
+          #orchestratorConnection: 'UiPathCloudmarianplatonov2025connection'
+          #traceLevel: 'Verbose'
 
       #- task: UiPathPack@5
         #inputs:
